@@ -1,0 +1,40 @@
+
+											<span className="m-3 d-block">TEAM</span>
+											<div className="chat-bx d-flex active mb-2 border-bottom">
+												<div className="group-pic">
+													<div className="d-flex">
+														<img src={group1} alt="" />
+														<img src={group2} alt="" />
+													</div>
+													<div className="d-flex">
+														<img src={group3} alt="" />
+														<img src={group4} alt="" />
+													</div>
+												</div>
+												<div className="w-100">
+													<div className="d-flex mb-1 align-items-center">
+														<span className="fs-16 text-black">Fillow Designer Team</span>
+														<span className="fs-12 ms-auto">2m ago</span>
+													</div>
+													<p className="mb-0">Hey Jenny, don’t forget to prepare prototype for next week</p>
+												</div>
+											</div>
+											<div className="chat-bx d-flex border-bottom">
+												<div className="group-pic">
+													<div className="d-flex">
+														<img src={group1} alt="" />
+														<img src={group2} alt="" />
+													</div>
+													<div className="d-flex">
+														<img src={group3} alt="" />
+														<img src={group4} alt="" />
+													</div>
+												</div>
+												<div className="w-100">
+													<div className="d-flex mb-1 align-items-center">
+														<span className="fs-16 text-black">Fillow Designer Team</span>
+														<span className="fs-12 ms-auto">2m ago</span>
+													</div>
+													<p className="mb-0">Hey Jenny, don’t forget to prepare prototype for next week</p>
+												</div>
+											</div>

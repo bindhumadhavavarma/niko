@@ -26533,7 +26533,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   flex: 1;
 }
 
-.plus-bx a, .plus-bx button {
+.plus-bx a.spec_button, .plus-bx button.spec_button {
   margin: 0 5px;
   width: 49px;
   height: 49px;
@@ -26545,11 +26545,11 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   font-size: 20px;
   padding: 0;
 }
-.plus-bx button {
+.plus-bx button.spec_button {
   border: none;
 }
 @media only screen and (max-width: 35.9375rem) {
-  .plus-bx a {
+  .plus-bx a.spec_button {
     width: 35px;
     height: 35px;
     line-height: 35px;
@@ -26610,6 +26610,9 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 .chat-bx {
   padding: 12px 20px;
+  border: none;
+  background: none;
+  text-align: left;
 }
 .chat-bx.active {
   background: var(--rgba-primary-1);
@@ -26623,6 +26626,9 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   top: 0;
   left: 0;
   content: "";
+}
+.chat-bx:hover {
+  background: var(--rgba-primary-1);
 }
 
 .chat-img img {
@@ -29624,6 +29630,12 @@ body {
 
 .content-body {
   min-height: calc(100vh - 6rem + 10px);
+}
+
+.EmojiPickerReact {
+  position: absolute;
+  bottom: 450px;
+  right: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

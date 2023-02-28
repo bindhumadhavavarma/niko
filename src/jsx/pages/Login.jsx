@@ -1,29 +1,24 @@
 import React, { useState, useContext } from 'react'
-import { connect } from 'react-redux';
 import { Axios, UserContext } from '../../context/UserContext';
 import { pushNotify } from '../../services/NotifyService';
 // image
 import logo from "../../images/logo-full.png";
 import loginbg from "../../images/pic1.png";
-import Select from "react-select";
 import { ScaleLoader } from 'react-spinners';
+import { Link } from "react-router-dom";
 
 function Login() {
 	const [isLoading, setIsLoading] = useState(false);
-	const { loginUser, loggedInCheck } = useContext(UserContext);
+	const { loginUser, loggedInCheck, googleSignin } = useContext(UserContext);
 	const [formData, setFormData] = useState({
 		username: '',
 		password: ''
 	});
-	const [formData2, setFormData2] = useState({ movie: null });
-	const [multipleMovies, setMultipleMovies] = useState(false);
-	const [movieOptions, setmovieOptions] = useState(null);
 	const onChangeInput = (e) => {
 		setFormData({
 			...formData,
 			[e.target.name]: e.target.value
 		})
-		setMultipleMovies(false);
 	}
 
 	const submitForm = async (e) => {
@@ -38,17 +33,8 @@ function Login() {
 		else {
 			const data = await loginUser(formData);
 			console.log(data);
-			if (data.Success) {
-				e.target.reset();
-				await loggedInCheck();
-			}
-			else if (data.message == "multiple") {
-				setmovieOptions(data.accounts);
-				setMultipleMovies(true);
-			}
-			else pushNotify('error', 'Error', data.message);
+			setIsLoading(false)
 		}
-		setIsLoading(false)
 	}
 
 
@@ -95,22 +81,16 @@ function Login() {
 															onChange={onChangeInput}
 														/>
 													</div>
-													{multipleMovies ? (
-														<>
-															<label className="mb-1"><strong>Select a movie</strong></label>
-															<Select
-																value={formData2.movie}
-																onChange={(e) => { setFormData2({ ...formData2, "movie": e }) }}
-																options={movieOptions}
-															/>
-														</>
-													) : null}
 													<div className="text-center form-group mb-3 my-3">
 														<button type="submit" className="btn btn-primary btn-block">
 															Sign In
 														</button>
 													</div>
 												</form>
+												<button type="submit" onClick={googleSignin} className="btn btn-primary btn-block">
+													Google Sign In
+												</button>
+												<div className='text-center'>Don't have an account? <Link to="/signup">Sign Up</Link></div>
 											</div>
 										</div>
 									)
@@ -124,12 +104,4 @@ function Login() {
 
 	);
 };
-
-const mapStateToProps = (state) => {
-	return {
-		errorMessage: state.auth.errorMessage,
-		successMessage: state.auth.successMessage,
-		showLoading: state.auth.showLoading,
-	};
-};
-export default connect(mapStateToProps)(Login);
+export default Login;

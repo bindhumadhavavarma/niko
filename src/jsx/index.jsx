@@ -12,23 +12,16 @@ import "./step.css";
 import Nav from "./layouts/nav";
 import Footer from "./layouts/Footer";
 /// Dashboard
-import Home from "./components/Home/Home";
 
 /// Widget
 ///Accounts
 import { ThemeContext } from "../context/ThemeContext";
-import AddTransaction from "./components/Dashboard/components/AddTransaction";
-import Transaction from "./components/Dashboard/components/Transaction";
-import ViewTransaction from "./components/Dashboard/components/ViewTransaction";
-import Companies from "./components/Companies/Companies";
-import Departments from "./components/Departments/Departments";
-import DepartmentReports from "./components/Departments/DepartmentReports";
 import Messages from "./components/Chat/Messages";
 const Markup = () => {
   const { menuToggle } = useContext(ThemeContext);
   let routes = [
     /// Dashboard
-    { url: "", component: Home }
+    { url: "", component: Messages }
   ];
 
   let path = window.location.pathname;
@@ -37,14 +30,7 @@ const Markup = () => {
 
   routes = [
     /// Dashboard
-    { url: "", component: Home },
-    { url: "add-transaction", component: AddTransaction },
-    { url: "view-transactions", component: ViewTransaction },
-    { url: "review-transactions", component: Transaction },
-    { url: "manage-departments", component: Departments },
-    { url: "department-wise-reports", component: DepartmentReports },
-    { url: "companies", component: Companies },
-    { url: "messages", component: Messages }
+    { url: "", component: Messages },
   ];
 
   let pagePath = path.split("-").includes("page");
