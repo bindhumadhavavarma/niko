@@ -21,6 +21,10 @@ function SendFriendRequest() {
         });
     }
 
+    const sendReq = (user) => {
+        console.log(user)
+    }
+
     useEffect(() => {
         fetchUsers()
     }, [])
@@ -31,9 +35,24 @@ function SendFriendRequest() {
                 <div>
                     <input type="text" placeholder='Search by Email' className='form-control' />
                 </div>
-                <div style={{ maxHeight: "400px" }}>
+                <div style={{ maxHeight: "400px", overflowY: 'scroll' }}>
                     {Object.keys(Users).map((user) => (<>
-                        <div>{Users[user].email}</div>
+                        <div key={user}>
+                            <div className="chat-bx d-flex border-bottom" style={{ width: '100%' }} >
+                                <div className="chat-img">
+                                    <img src={`${Users[user].photoURL}`} referrerPolicy="no-referrer" alt="" />
+                                </div>
+                                <div className="w-100">
+                                    <div className="d-flex mb-1 align-items-center justify-content-between">
+                                        <span className="fs-16 text-black">{Users[user].full_name}</span>
+                                        <button className='spec_button' style={{ width: '3rem', height: '2rem', borderRadius: '70%', border: 'none' }} onClick={()=>sendReq(Users[user].full_name)}><i className="fas fa-solid fa-user-plus"></i></button>
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <p className="mb-0">{Users[user].email}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </>))}
                 </div>
             </div>
